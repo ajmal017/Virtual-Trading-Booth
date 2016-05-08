@@ -1,0 +1,14 @@
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\bin\Debug\VTB.exe.config
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\bin\Debug\VTB.exe
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\bin\Debug\VTB.pdb
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.csprojResolveAssemblyReference.cache
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.Form1.resources
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.Properties.Resources.resources
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.csproj.GenerateResource.Cache
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.exe
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.pdb
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\bin\Debug\Interop.TWSLib.dll
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\bin\Debug\AxInterop.TWSLib.dll
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\Interop.TWSLib.dll
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\AxInterop.TWSLib.dll
+D:\Libraries\Documents\School\SP_2016\CIS_4620\VTB\VTB\obj\Debug\VTB.csproj.ResolveComReference.cache
