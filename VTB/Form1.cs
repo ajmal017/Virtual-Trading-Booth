@@ -88,7 +88,7 @@ namespace VTB
             // Contract identifier (use a unique number for each security)
             ContractInfo.conId = 0;
             // Stock symbol
-            ContractInfo.symbol = "AAPL";
+            ContractInfo.symbol = tbSymbol.Text;
             // Type of instrument: Stock=STK,Option=OPT,Future=FUT, etc.
             ContractInfo.secType = "STK";
             // The Options or Futures expiration data in the format YYYYMM
@@ -100,10 +100,10 @@ namespace VTB
             // The contract multiplier for Futures or Options 
             ContractInfo.multiplier = "";
             // The destination of order or request. "SMART" =IB order router
-            ContractInfo.exchange = "SMART";
+            ContractInfo.exchange = sMARTToolStripMenuItem.Text;
             // The primary exchange where the instrument trades. 
             // NYSE,  NASDAQ, AMEX, BATS, ARCA, PHLX etc.
-            ContractInfo.primaryExchange = "NASDAQ";
+            ContractInfo.primaryExchange = tbExchange.Text;
             // The currency of the exchange USD or GBP or CAD or EUR, etc.
             ContractInfo.currency = "USD";
 
@@ -117,6 +117,9 @@ namespace VTB
             //   as the fifth parameter - this may have been fixed in newer version of the API
             //   axTws1.reqMktDataEx(0, ContractInfo, "", 0, mktDataOptions);  
 
-        }
+
+
+
+        }// end Reconnect code segment.
     }
 }
