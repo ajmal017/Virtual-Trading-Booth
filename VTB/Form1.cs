@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace VTB
 {
     public partial class Form1 : Form
-    {
+    { List<double> listOfPrices;
         public Form1()
-        {
+            
+        {   // this is the list of prices which will be shown on the chart
+            listOfPrices = new List<double>() ;
             InitializeComponent();
         }
 
@@ -121,5 +124,16 @@ namespace VTB
 
 
         }// end Reconnect code segment.
+
+        private void axTws1_tickPrice(object sender, AxTWSLib._DTwsEvents_tickPriceEvent e)
+        {   // If the price is the Last Price, add it to the list of prices
+            if(e.price == 4)
+            {   
+                listOfPrices.Add(e.price);
+                /* Not this is currently just adding the price from connection to the chart, we might need
+                 more data for functions */
+                OurChart.Series["Price"].Points.AddY(e.price);
+            }
+        }// end TWS tick price event handler
     }
 }

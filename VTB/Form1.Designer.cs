@@ -40,7 +40,7 @@
             this.sMARTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chartGroupBox = new System.Windows.Forms.GroupBox();
-            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.OurChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.algoGroupBox = new System.Windows.Forms.GroupBox();
             this.btnSubmit = new System.Windows.Forms.Button();
             this.textBox5 = new System.Windows.Forms.TextBox();
@@ -72,7 +72,7 @@
             this.tbSymbol = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.chartGroupBox.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OurChart)).BeginInit();
             this.algoGroupBox.SuspendLayout();
             this.logGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).BeginInit();
@@ -139,7 +139,7 @@
             this.chartGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.chartGroupBox.Controls.Add(this.chart1);
+            this.chartGroupBox.Controls.Add(this.OurChart);
             this.chartGroupBox.Location = new System.Drawing.Point(13, 96);
             this.chartGroupBox.Name = "chartGroupBox";
             this.chartGroupBox.Size = new System.Drawing.Size(491, 357);
@@ -147,25 +147,25 @@
             this.chartGroupBox.TabStop = false;
             this.chartGroupBox.Text = "Chart";
             // 
-            // chart1
+            // OurChart
             // 
-            this.chart1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             chartArea1.Name = "ChartArea1";
-            this.chart1.ChartAreas.Add(chartArea1);
+            this.OurChart.ChartAreas.Add(chartArea1);
             legend1.Name = "Legend1";
-            this.chart1.Legends.Add(legend1);
-            this.chart1.Location = new System.Drawing.Point(7, 20);
-            this.chart1.Name = "chart1";
+            this.OurChart.Legends.Add(legend1);
+            this.OurChart.Location = new System.Drawing.Point(7, 20);
+            this.OurChart.Name = "OurChart";
             series1.ChartArea = "ChartArea1";
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
             series1.Legend = "Legend1";
-            series1.Name = "Series1";
-            this.chart1.Series.Add(series1);
-            this.chart1.Size = new System.Drawing.Size(478, 331);
-            this.chart1.TabIndex = 0;
-            this.chart1.Text = "chart1";
+            series1.Name = "Price";
+            this.OurChart.Series.Add(series1);
+            this.OurChart.Size = new System.Drawing.Size(478, 331);
+            this.OurChart.TabIndex = 0;
+            this.OurChart.Text = "chart1";
             // 
             // algoGroupBox
             // 
@@ -429,6 +429,7 @@
             this.axTws1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axTws1.OcxState")));
             this.axTws1.Size = new System.Drawing.Size(133, 18);
             this.axTws1.TabIndex = 6;
+            this.axTws1.tickPrice += new AxTWSLib._DTwsEvents_tickPriceEventHandler(this.axTws1_tickPrice);
             // 
             // btnReconnect
             // 
@@ -497,7 +498,7 @@
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.chartGroupBox.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.OurChart)).EndInit();
             this.algoGroupBox.ResumeLayout(false);
             this.algoGroupBox.PerformLayout();
             this.logGroupBox.ResumeLayout(false);
@@ -516,7 +517,7 @@
         private System.Windows.Forms.GroupBox algoGroupBox;
         private System.Windows.Forms.GroupBox logGroupBox;
         private System.Windows.Forms.Button btnConnect;
-        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart OurChart;
         private System.Windows.Forms.ListBox listBox1;
         private System.Windows.Forms.Button btnDisconnect;
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
