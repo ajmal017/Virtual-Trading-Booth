@@ -81,7 +81,7 @@ namespace VTB
         }// End Code Segment for Disconnect Button
 
         private void btnReconnect_Click(object sender, EventArgs e)
-        {
+        {   //Balls 
             listOfPrices.Clear();
             OurChart.Series["Price"].Points.Clear();
             // Cancel the Initial Market data Connection when pressing connect
