@@ -159,7 +159,7 @@
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
             series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.FastLine;
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Price";
             this.OurChart.Series.Add(series1);
