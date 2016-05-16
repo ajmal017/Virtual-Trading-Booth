@@ -12,11 +12,12 @@ using System.Windows.Forms;
 namespace VTB
 {
     public partial class Form1 : Form
-    { List<double> listOfPrices;
+    {
+        System.Collections.Generic.List<double> listOfPrices;
         public Form1()
             
         {   // this is the list of prices which will be shown on the chart
-            listOfPrices = new List<double>() ;
+            listOfPrices = new System.Collections.Generic.List<double>();
             InitializeComponent();
         }
 
@@ -80,7 +81,9 @@ namespace VTB
         }// End Code Segment for Disconnect Button
 
         private void btnReconnect_Click(object sender, EventArgs e)
-        {
+        {   //Balls 
+            listOfPrices.Clear();
+            OurChart.Series["Price"].Points.Clear();
             // Cancel the Initial Market data Connection when pressing connect
             axTws1.cancelMktData(0);
             // Create a new contract object
@@ -127,11 +130,13 @@ namespace VTB
 
         private void axTws1_tickPrice(object sender, AxTWSLib._DTwsEvents_tickPriceEvent e)
         {   // If the price is the Last Price, add it to the list of prices
-            if(e.price == 4)
+            if(e.tickType == 4)
             {   
                 listOfPrices.Add(e.price);
                 /* Not this is currently just adding the price from connection to the chart, we might need
                  more data for functions */
+                OurChart.ChartAreas[0].AxisY.Maximum = listOfPrices.Max() + .05;
+                OurChart.ChartAreas[0].AxisY.Minimum = listOfPrices.Min() - .05;
                 OurChart.Series["Price"].Points.AddY(e.price);
             }
         }// end TWS tick price event handler
