@@ -135,6 +135,7 @@ namespace VTB
                 listOfPrices.Add(e.price);
                 /* Not this is currently just adding the price from connection to the chart, we might need
                  more data for functions */
+                OurChart.ChartAreas[0].AxisY.Maximum = listOfPrices.Max() + .05;
                 OurChart.ChartAreas[0].AxisY.Minimum = listOfPrices.Min() - .05;
                 OurChart.Series["Price"].Points.AddY(e.price);
             }
