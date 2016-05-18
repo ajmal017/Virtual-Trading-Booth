@@ -71,3 +71,4 @@ C:\Users\Jose\Documents\GitHub\Virtual-Trading-Booth\VTB\obj\Debug\VTB.csprojRes
 C:\Users\Jose\Documents\GitHub\Virtual-Trading-Booth\VTB\obj\Debug\VTB.Form1.resources
 C:\Users\Jose\Documents\GitHub\Virtual-Trading-Booth\VTB\obj\Debug\VTB.Properties.Resources.resources
 C:\Users\Jose\Documents\GitHub\Virtual-Trading-Booth\VTB\obj\Debug\VTB.csproj.GenerateResource.Cache
+D:\Libraries\Documents\GitHub\Virtual-Trading-Booth\VTB\bin\Debug\TA-Lib-Core.dll

@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-
+using TicTacTec.TA.Library;
 
 namespace VTB
 {
@@ -140,5 +140,39 @@ namespace VTB
                 OurChart.Series["Price"].Points.AddY(e.price);
             }
         }// end TWS tick price event handler
+
+        private void btnSubmit_Click(object sender, EventArgs e)
+        {
+            int outBegIdxSma, outBegIdxEma, outBegIdxRsi;
+            int outNbElementSma, outNbElementEma, outNbElementRsi;
+            double[] priceArray = listOfPrices.ToArray();
+            
+            // SMA
+            if (tbValSma.Text != "")
+            {
+                int timeFrameSma = Convert.ToInt32(tbSmaTimeFrame.Text.Split(',')[1]);
+                double[] outputSma = new double[priceArray.Length];
+                Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrameSma, out outBegIdxSma, out outNbElementSma, outputSma);
+            }
+
+            // EMA
+            if (tbValEma.Text != "")
+            {
+                int timeFrameEma = Convert.ToInt32(tbEmaTimeFrame.Text.Split(',')[1]);
+                double[] outputEma = new double[priceArray.Length];
+                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrameEma, out outBegIdxEma, out outNbElementEma, outputEma);
+            }
+
+            // RSI
+            if (tbValRsi.Text != "")
+            {
+                int timeFrameRsi = Convert.ToInt32(tbRsiTimeFrame.Text.Split(',')[1]);
+                double[] outputRsi = new double[priceArray.Length];
+                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrameRsi, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+            }
+            
+        }// end btnSubmit_Click
+
+
     }
 }
