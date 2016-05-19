@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -142,17 +142,17 @@
             this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.OurChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.OurChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.OurChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.OurChart.Legends.Add(legend2);
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Price";
-            this.OurChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Price";
+            this.OurChart.Series.Add(series2);
             this.OurChart.Size = new System.Drawing.Size(478, 331);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
@@ -232,6 +232,7 @@
             this.axTws1.Size = new System.Drawing.Size(133, 18);
             this.axTws1.TabIndex = 6;
             this.axTws1.tickPrice += new AxTWSLib._DTwsEvents_tickPriceEventHandler(this.axTws1_tickPrice);
+            this.axTws1.realtimeBar += new AxTWSLib._DTwsEvents_realtimeBarEventHandler(this.axTws1_realtimeBar);
             // 
             // btnReconnect
             // 
@@ -319,6 +320,7 @@
             this.comboStrategy.Name = "comboStrategy";
             this.comboStrategy.Size = new System.Drawing.Size(133, 24);
             this.comboStrategy.TabIndex = 21;
+            this.comboStrategy.SelectedIndexChanged += new System.EventHandler(this.comboStrategy_SelectedIndexChanged);
             // 
             // label3
             // 
