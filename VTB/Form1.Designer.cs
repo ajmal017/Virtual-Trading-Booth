@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,6 +42,21 @@
             this.chartGroupBox = new System.Windows.Forms.GroupBox();
             this.OurChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.algoGroupBox = new System.Windows.Forms.GroupBox();
+            this.tbLimitPrice = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.comboAction = new System.Windows.Forms.ComboBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.tbOrderId = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.nbQuantity = new System.Windows.Forms.NumericUpDown();
+            this.label2 = new System.Windows.Forms.Label();
+            this.nbTimeFrame = new System.Windows.Forms.NumericUpDown();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbDescription = new System.Windows.Forms.RichTextBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboStrategy = new System.Windows.Forms.ComboBox();
+            this.label3 = new System.Windows.Forms.Label();
             this.logGroupBox = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -49,24 +64,25 @@
             this.axTws1 = new AxTWSLib.AxTws();
             this.btnReconnect = new System.Windows.Forms.Button();
             this.lblExchange = new System.Windows.Forms.Label();
-            this.tbExchange = new System.Windows.Forms.TextBox();
+            this.tbPrimaryExchange = new System.Windows.Forms.TextBox();
             this.lblSymbol = new System.Windows.Forms.Label();
             this.tbSymbol = new System.Windows.Forms.TextBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboStrategy = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.tbDescription = new System.Windows.Forms.RichTextBox();
-            this.numTimeFrame = new System.Windows.Forms.NumericUpDown();
+            this.label7 = new System.Windows.Forms.Label();
+            this.comboOrderType = new System.Windows.Forms.ComboBox();
+            this.tbOrderType = new System.Windows.Forms.TextBox();
+            this.tbAction = new System.Windows.Forms.TextBox();
+            this.tbQuantity = new System.Windows.Forms.TextBox();
+            this.nASDAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nYSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.chartGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OurChart)).BeginInit();
             this.algoGroupBox.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbQuantity)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbTimeFrame)).BeginInit();
+            this.groupBox1.SuspendLayout();
             this.logGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).BeginInit();
-            this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.numTimeFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -106,9 +122,11 @@
             // exchangeToolStripMenuItem
             // 
             this.exchangeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sMARTToolStripMenuItem});
+            this.sMARTToolStripMenuItem,
+            this.nASDAQToolStripMenuItem,
+            this.nYSEToolStripMenuItem});
             this.exchangeToolStripMenuItem.Name = "exchangeToolStripMenuItem";
-            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
+            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.exchangeToolStripMenuItem.Text = "Exchange";
             // 
             // sMARTToolStripMenuItem
@@ -143,17 +161,17 @@
             this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea1.Name = "ChartArea1";
-            this.OurChart.ChartAreas.Add(chartArea1);
-            legend1.Name = "Legend1";
-            this.OurChart.Legends.Add(legend1);
+            chartArea2.Name = "ChartArea1";
+            this.OurChart.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.OurChart.Legends.Add(legend2);
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
-            series1.ChartArea = "ChartArea1";
-            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series1.Legend = "Legend1";
-            series1.Name = "Price";
-            this.OurChart.Series.Add(series1);
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Legend = "Legend1";
+            series2.Name = "Price";
+            this.OurChart.Series.Add(series2);
             this.OurChart.Size = new System.Drawing.Size(478, 331);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
@@ -162,7 +180,20 @@
             // 
             this.algoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.algoGroupBox.Controls.Add(this.numTimeFrame);
+            this.algoGroupBox.Controls.Add(this.tbQuantity);
+            this.algoGroupBox.Controls.Add(this.tbAction);
+            this.algoGroupBox.Controls.Add(this.tbOrderType);
+            this.algoGroupBox.Controls.Add(this.comboOrderType);
+            this.algoGroupBox.Controls.Add(this.label7);
+            this.algoGroupBox.Controls.Add(this.tbLimitPrice);
+            this.algoGroupBox.Controls.Add(this.label6);
+            this.algoGroupBox.Controls.Add(this.comboAction);
+            this.algoGroupBox.Controls.Add(this.label5);
+            this.algoGroupBox.Controls.Add(this.tbOrderId);
+            this.algoGroupBox.Controls.Add(this.label4);
+            this.algoGroupBox.Controls.Add(this.nbQuantity);
+            this.algoGroupBox.Controls.Add(this.label2);
+            this.algoGroupBox.Controls.Add(this.nbTimeFrame);
             this.algoGroupBox.Controls.Add(this.groupBox1);
             this.algoGroupBox.Controls.Add(this.btnSubmit);
             this.algoGroupBox.Controls.Add(this.label1);
@@ -175,6 +206,151 @@
             this.algoGroupBox.TabIndex = 2;
             this.algoGroupBox.TabStop = false;
             this.algoGroupBox.Text = "Algorithm";
+            // 
+            // tbLimitPrice
+            // 
+            this.tbLimitPrice.Location = new System.Drawing.Point(292, 99);
+            this.tbLimitPrice.Name = "tbLimitPrice";
+            this.tbLimitPrice.Size = new System.Drawing.Size(120, 20);
+            this.tbLimitPrice.TabIndex = 35;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(226, 102);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(59, 13);
+            this.label6.TabIndex = 34;
+            this.label6.Text = "Limit Price*";
+            // 
+            // comboAction
+            // 
+            this.comboAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboAction.FormattingEnabled = true;
+            this.comboAction.Items.AddRange(new object[] {
+            "BUY",
+            "SELL",
+            "SSHORT"});
+            this.comboAction.Location = new System.Drawing.Point(292, 241);
+            this.comboAction.Name = "comboAction";
+            this.comboAction.Size = new System.Drawing.Size(120, 21);
+            this.comboAction.TabIndex = 33;
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(226, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(37, 13);
+            this.label5.TabIndex = 32;
+            this.label5.Text = "Action";
+            // 
+            // tbOrderId
+            // 
+            this.tbOrderId.Location = new System.Drawing.Point(292, 46);
+            this.tbOrderId.Name = "tbOrderId";
+            this.tbOrderId.Size = new System.Drawing.Size(120, 20);
+            this.tbOrderId.TabIndex = 31;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(226, 50);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(47, 13);
+            this.label4.TabIndex = 30;
+            this.label4.Text = "Order ID";
+            // 
+            // nbQuantity
+            // 
+            this.nbQuantity.Location = new System.Drawing.Point(292, 268);
+            this.nbQuantity.Name = "nbQuantity";
+            this.nbQuantity.Size = new System.Drawing.Size(120, 20);
+            this.nbQuantity.TabIndex = 29;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(226, 22);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(46, 13);
+            this.label2.TabIndex = 28;
+            this.label2.Text = "Quantity";
+            // 
+            // nbTimeFrame
+            // 
+            this.nbTimeFrame.Location = new System.Drawing.Point(78, 50);
+            this.nbTimeFrame.Name = "nbTimeFrame";
+            this.nbTimeFrame.Size = new System.Drawing.Size(133, 20);
+            this.nbTimeFrame.TabIndex = 27;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.tbDescription);
+            this.groupBox1.Location = new System.Drawing.Point(6, 366);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(436, 137);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Description";
+            // 
+            // tbDescription
+            // 
+            this.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDescription.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(6, 19);
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ReadOnly = true;
+            this.tbDescription.Size = new System.Drawing.Size(424, 112);
+            this.tbDescription.TabIndex = 0;
+            this.tbDescription.Text = "Summary of strategy will appear here once selected.";
+            // 
+            // btnSubmit
+            // 
+            this.btnSubmit.Location = new System.Drawing.Point(332, 152);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 24;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 50);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Time Frame";
+            // 
+            // comboStrategy
+            // 
+            this.comboStrategy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboStrategy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboStrategy.FormattingEnabled = true;
+            this.comboStrategy.Items.AddRange(new object[] {
+            "SMA Crossover",
+            "SMA Crossunder",
+            "EMA Crossover",
+            "EMA Crossunder",
+            "RSI Over Sold",
+            "RSI Over Bought"});
+            this.comboStrategy.Location = new System.Drawing.Point(78, 20);
+            this.comboStrategy.Name = "comboStrategy";
+            this.comboStrategy.Size = new System.Drawing.Size(133, 24);
+            this.comboStrategy.TabIndex = 21;
+            this.comboStrategy.SelectedIndexChanged += new System.EventHandler(this.comboStrategy_SelectedIndexChanged);
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(6, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 13);
+            this.label3.TabIndex = 20;
+            this.label3.Text = "Strategy";
             // 
             // logGroupBox
             // 
@@ -249,24 +425,24 @@
             // lblExchange
             // 
             this.lblExchange.AutoSize = true;
-            this.lblExchange.Location = new System.Drawing.Point(341, 9);
+            this.lblExchange.Location = new System.Drawing.Point(300, 7);
             this.lblExchange.Name = "lblExchange";
-            this.lblExchange.Size = new System.Drawing.Size(55, 13);
+            this.lblExchange.Size = new System.Drawing.Size(92, 13);
             this.lblExchange.TabIndex = 8;
-            this.lblExchange.Text = "Exchange";
+            this.lblExchange.Text = "Primary Exchange";
             // 
-            // tbExchange
+            // tbPrimaryExchange
             // 
-            this.tbExchange.Location = new System.Drawing.Point(398, 4);
-            this.tbExchange.Name = "tbExchange";
-            this.tbExchange.Size = new System.Drawing.Size(100, 20);
-            this.tbExchange.TabIndex = 9;
-            this.tbExchange.Text = "NASDAQ";
+            this.tbPrimaryExchange.Location = new System.Drawing.Point(398, 4);
+            this.tbPrimaryExchange.Name = "tbPrimaryExchange";
+            this.tbPrimaryExchange.Size = new System.Drawing.Size(100, 20);
+            this.tbPrimaryExchange.TabIndex = 9;
+            this.tbPrimaryExchange.Text = "NASDAQ";
             // 
             // lblSymbol
             // 
             this.lblSymbol.AutoSize = true;
-            this.lblSymbol.Location = new System.Drawing.Point(569, 9);
+            this.lblSymbol.Location = new System.Drawing.Point(570, 9);
             this.lblSymbol.Name = "lblSymbol";
             this.lblSymbol.Size = new System.Drawing.Size(72, 13);
             this.lblSymbol.TabIndex = 10;
@@ -280,80 +456,60 @@
             this.tbSymbol.TabIndex = 11;
             this.tbSymbol.Text = "MSFT";
             // 
-            // btnSubmit
+            // label7
             // 
-            this.btnSubmit.Location = new System.Drawing.Point(135, 82);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 24;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(226, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Order Type";
             // 
-            // label1
+            // comboOrderType
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 50);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 13);
-            this.label1.TabIndex = 22;
-            this.label1.Text = "Time Frame";
+            this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboOrderType.FormattingEnabled = true;
+            this.comboOrderType.Items.AddRange(new object[] {
+            "MKT",
+            "LMT"});
+            this.comboOrderType.Location = new System.Drawing.Point(292, 214);
+            this.comboOrderType.Name = "comboOrderType";
+            this.comboOrderType.Size = new System.Drawing.Size(120, 21);
+            this.comboOrderType.TabIndex = 37;
             // 
-            // comboStrategy
+            // tbOrderType
             // 
-            this.comboStrategy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboStrategy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.comboStrategy.FormattingEnabled = true;
-            this.comboStrategy.Items.AddRange(new object[] {
-            "SMA Crossover",
-            "SMA Crossunder",
-            "EMA Crossover",
-            "EMA Crossunder",
-            "RSI Over Sold",
-            "RSI Over Bought"});
-            this.comboStrategy.Location = new System.Drawing.Point(78, 20);
-            this.comboStrategy.Name = "comboStrategy";
-            this.comboStrategy.Size = new System.Drawing.Size(133, 24);
-            this.comboStrategy.TabIndex = 21;
-            this.comboStrategy.SelectedIndexChanged += new System.EventHandler(this.comboStrategy_SelectedIndexChanged);
+            this.tbOrderType.Location = new System.Drawing.Point(293, 126);
+            this.tbOrderType.Name = "tbOrderType";
+            this.tbOrderType.Size = new System.Drawing.Size(119, 20);
+            this.tbOrderType.TabIndex = 38;
             // 
-            // label3
+            // tbAction
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(6, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 13);
-            this.label3.TabIndex = 20;
-            this.label3.Text = "Strategy";
+            this.tbAction.Location = new System.Drawing.Point(292, 73);
+            this.tbAction.Name = "tbAction";
+            this.tbAction.Size = new System.Drawing.Size(120, 20);
+            this.tbAction.TabIndex = 39;
+            this.tbAction.Text = "BUY";
             // 
-            // groupBox1
+            // tbQuantity
             // 
-            this.groupBox1.Controls.Add(this.tbDescription);
-            this.groupBox1.Location = new System.Drawing.Point(6, 366);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(436, 137);
-            this.groupBox1.TabIndex = 25;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Description";
+            this.tbQuantity.Location = new System.Drawing.Point(292, 20);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(120, 20);
+            this.tbQuantity.TabIndex = 40;
             // 
-            // tbDescription
+            // nASDAQToolStripMenuItem
             // 
-            this.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.tbDescription.Cursor = System.Windows.Forms.Cursors.Default;
-            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbDescription.Location = new System.Drawing.Point(6, 19);
-            this.tbDescription.Name = "tbDescription";
-            this.tbDescription.ReadOnly = true;
-            this.tbDescription.Size = new System.Drawing.Size(424, 112);
-            this.tbDescription.TabIndex = 0;
-            this.tbDescription.Text = "Summary of strategy will appear here once selected.";
+            this.nASDAQToolStripMenuItem.Name = "nASDAQToolStripMenuItem";
+            this.nASDAQToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nASDAQToolStripMenuItem.Text = "NASDAQ";
             // 
-            // numTimeFrame
+            // nYSEToolStripMenuItem
             // 
-            this.numTimeFrame.Location = new System.Drawing.Point(78, 50);
-            this.numTimeFrame.Name = "numTimeFrame";
-            this.numTimeFrame.Size = new System.Drawing.Size(133, 20);
-            this.numTimeFrame.TabIndex = 27;
+            this.nYSEToolStripMenuItem.Name = "nYSEToolStripMenuItem";
+            this.nYSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nYSEToolStripMenuItem.Text = "NYSE";
             // 
             // Form1
             // 
@@ -362,7 +518,7 @@
             this.ClientSize = new System.Drawing.Size(970, 619);
             this.Controls.Add(this.tbSymbol);
             this.Controls.Add(this.lblSymbol);
-            this.Controls.Add(this.tbExchange);
+            this.Controls.Add(this.tbPrimaryExchange);
             this.Controls.Add(this.lblExchange);
             this.Controls.Add(this.btnReconnect);
             this.Controls.Add(this.axTws1);
@@ -381,10 +537,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.OurChart)).EndInit();
             this.algoGroupBox.ResumeLayout(false);
             this.algoGroupBox.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nbQuantity)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.nbTimeFrame)).EndInit();
+            this.groupBox1.ResumeLayout(false);
             this.logGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).EndInit();
-            this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.numTimeFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -409,7 +566,7 @@
         private System.Windows.Forms.ToolStripMenuItem sMARTToolStripMenuItem;
         private System.Windows.Forms.Button btnReconnect;
         private System.Windows.Forms.Label lblExchange;
-        private System.Windows.Forms.TextBox tbExchange;
+        private System.Windows.Forms.TextBox tbPrimaryExchange;
         private System.Windows.Forms.Label lblSymbol;
         private System.Windows.Forms.TextBox tbSymbol;
         private System.Windows.Forms.GroupBox groupBox1;
@@ -418,7 +575,22 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboStrategy;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown numTimeFrame;
+        private System.Windows.Forms.NumericUpDown nbTimeFrame;
+        private System.Windows.Forms.NumericUpDown nbQuantity;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox tbOrderId;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.ComboBox comboAction;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox tbLimitPrice;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.ComboBox comboOrderType;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox tbOrderType;
+        private System.Windows.Forms.TextBox tbAction;
+        private System.Windows.Forms.TextBox tbQuantity;
+        private System.Windows.Forms.ToolStripMenuItem nASDAQToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem nYSEToolStripMenuItem;
     }
 }
 

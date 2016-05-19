@@ -14,16 +14,21 @@ namespace VTB
     public partial class Form1 : Form
     {
         System.Collections.Generic.List<double> listOfPrices;
+        System.Collections.Generic.List<double> listOfOpens;
         System.Collections.Generic.List<double> listOfHighs;
         System.Collections.Generic.List<double> listOfLows;
+        System.Collections.Generic.List<double> listOfCloses;
         string strategyToApply;
 
         public Form1()            
         {   
             // this is the list of prices which will be shown on the chart
             listOfPrices = new System.Collections.Generic.List<double>();
+            listOfOpens = new System.Collections.Generic.List<double>();
             listOfHighs = new System.Collections.Generic.List<double>();
             listOfLows = new System.Collections.Generic.List<double>();
+            listOfCloses = new System.Collections.Generic.List<double>();
+
             InitializeComponent();
         }
 
@@ -148,9 +153,9 @@ namespace VTB
             // Type of instrument: Stock=STK,Option=OPT,Future=FUT, etc.
             ContractInfo.secType = "STK";
             // The destination of order or request. "SMART" =IB order router
-            ContractInfo.exchange = "SMART";
+            ContractInfo.exchange = sMARTToolStripMenuItem.Text;
             // The primary exchange for the stock.
-            ContractInfo.primaryExchange = "NASDAQ";
+            ContractInfo.primaryExchange = tbPrimaryExchange.Text;
             // The currency of the exchange USD or GBP or CAD or EUR, etc.
             ContractInfo.currency = "USD";
             // Make the request for Real Time Bars. Parameters are:
@@ -160,12 +165,16 @@ namespace VTB
             //   whatToShow     Use "TRADES" to show OHLC trades. Can also use 
             //                  "BID", "ASK" or "MID" for quotes
             //   useRTH         Use Regular Trading Hours only (set to 1)
+            // Get open, high, low, close every ~ 5 sec.
             axTws1.reqRealTimeBarsEx(0, ContractInfo, 5, "TRADES", 1, mktDataOptions);
+            // Get real time/streaming prices
+            axTws1.reqMktDataEx(0, ContractInfo, "", 0, mktDataOptions);
 
         }// end Reconnect code segment.
 
         private void axTws1_tickPrice(object sender, AxTWSLib._DTwsEvents_tickPriceEvent e)
-        {   // If the price is the Last Price, add it to the list of prices
+        {   
+            // If the price is the Last Price, add it to the list of prices
             if(e.tickType == 4)
             {   
                 listOfPrices.Add(e.price);
@@ -175,6 +184,7 @@ namespace VTB
                 OurChart.ChartAreas[0].AxisY.Minimum = listOfPrices.Min() - .05;
                 OurChart.Series["Price"].Points.AddY(e.price);
             }
+
         }// end TWS tick price event handler
 
 
@@ -202,13 +212,10 @@ namespace VTB
             strBarString += dtDateTime + "," + e.open + "," + e.high + ",";
             strBarString += e.low + "," + e.close + "," + e.volume;
 
-            listOfPrices.Add(e.close);
+            listOfOpens.Add(e.open);
             listOfHighs.Add(e.high);
             listOfLows.Add(e.low);
-
-            OurChart.ChartAreas[0].AxisY.Maximum = listOfPrices.Max() + .05;
-            OurChart.ChartAreas[0].AxisY.Minimum = listOfPrices.Min() - .05;
-            OurChart.Series["Price"].Points.AddY(e.close);
+            listOfCloses.Add(e.close);
 
         }// end axTws1_realtimeBar
 
@@ -217,32 +224,32 @@ namespace VTB
 
             if (comboStrategy.Text.ToString() == "SMA Crossover")
             {
-                tbDescription.Text = "This strategy will look for bullish trends, buying if the current price crosses above the Simple Moving Avg.";
+                tbDescription.Text = "This strategy will look for bullish trends, indicated by the current price crossing above the Simple Moving Avg.";
                 strategyToApply = "smaCrossover"; 
             }
             else if (comboStrategy.Text.ToString() == "SMA Crossunder")
             {
-                tbDescription.Text = "This strategy will look for bearish trends, shorting the stock if the current price is below the Simple Moving Avg.";
+                tbDescription.Text = "This strategy will look for bearish trends, indicated by the current price dipping below the Simple Moving Avg.";
                 strategyToApply = "smaCrossunder";
             }
             else if (comboStrategy.Text.ToString() == "EMA Crossover")
             {
-                tbDescription.Text = "This strategy will look for bullish trends, shorting the stock if the current price is above the Exponential Moving Avg.";
+                tbDescription.Text = "This strategy will look for bullish trends, indicated by the current price crossing above the Exponential Moving Avg.";
                 strategyToApply = "emaCrossover";
             }
             else if (comboStrategy.Text.ToString() == "EMA Crossunder")
             {
-                tbDescription.Text = "This strategy will look for bearish trends, shorting the stock if the current price is below the Exponential Moving Avg.";
+                tbDescription.Text = "This strategy will look for bearish trends, indicated by the current price dipping below the Exponential Moving Avg.";
                 strategyToApply = "emaCrossunder";
             }
             else if (comboStrategy.Text.ToString() == "RSI Over Sold")
             {
-                tbDescription.Text = "This strategy will buy if the RSI is less than 30, indicating the stock had been over sold";
+                tbDescription.Text = "This strategy looks to see if the RSI is less than 30, indicating the stock had been over sold";
                 strategyToApply = "rsiOverSold";
             }
             else if (comboStrategy.Text.ToString() == "RSI Over Bought")
             {
-                tbDescription.Text = "This strategy will short a company if the RSI is greater than 70, indicating the stock had been over bought";
+                tbDescription.Text = "This strategy looks to see if the RSI is greater than 70, indicating the stock had been over bought";
                 strategyToApply = "rsiOverBought";
             }
             
@@ -250,8 +257,25 @@ namespace VTB
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
+            // For Ta-Lib
             double[] priceArray = listOfPrices.ToArray();
-            int timeFrame = Convert.ToInt32(numTimeFrame.Value);
+            int timeFrame = Convert.ToInt32(nbTimeFrame.Value);
+            
+            // For IB
+            TWSLib.IContract ContractInfo = axTws1.createContract();
+            TWSLib.IOrder OrderInfo = axTws1.createOrder();
+            ContractInfo.conId = 0;
+            ContractInfo.symbol = tbSymbol.Text;
+            ContractInfo.secType = "STK";
+            ContractInfo.exchange = "SMART"; // Needs work
+            ContractInfo.primaryExchange = this.tbPrimaryExchange.Text;
+            ContractInfo.currency = "USD";
+            OrderInfo.orderId = int.Parse(this.tbOrderId.Text);
+            OrderInfo.action = this.tbAction.Text;
+            OrderInfo.totalQuantity = int.Parse(this.tbQuantity.Text);
+            OrderInfo.orderType = this.tbOrderType.Text;
+            OrderInfo.lmtPrice = double.Parse(this.tbLimitPrice.Text);
+            OrderInfo.timeInForce = "DAY";
 
             if (strategyToApply == "smaCrossover")
             {
@@ -259,6 +283,11 @@ namespace VTB
                 double[] outputSma = new double[priceArray.Length];
 
                 Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
+
+                if (outputSma.Last() < listOfPrices.Last())
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
             else if (strategyToApply == "smaCrossunder")
@@ -267,6 +296,11 @@ namespace VTB
                 double[] outputSma = new double[priceArray.Length];
 
                 Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
+               
+                if (outputSma.Last() > listOfPrices.Last())
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
             else if (strategyToApply == "emaCrossover")
@@ -275,6 +309,11 @@ namespace VTB
                 double[] outputEma = new double[priceArray.Length];
 
                 Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
+
+                if (outputEma.Last() > listOfPrices.Last())
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
             else if (strategyToApply == "emaCrossunder")
@@ -283,6 +322,11 @@ namespace VTB
                 double[] outputEma = new double[priceArray.Length];
 
                 Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
+                
+                if (outputEma.Last() < listOfPrices.Last())
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
             else if (strategyToApply == "rsiOverSold")
@@ -291,6 +335,11 @@ namespace VTB
                 double[] outputRsi = new double[priceArray.Length];
 
                 Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+
+                if (outputRsi.Last() < 30)
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
             else if (strategyToApply == "rsiOverBought")
@@ -299,6 +348,11 @@ namespace VTB
                 double[] outputRsi = new double[priceArray.Length];
 
                 Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+                
+                if (outputRsi.Last() > 70)
+                {
+                    this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                }
             }
 
         }// end btnSubmit_Click
