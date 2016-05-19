@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,13 +52,13 @@
             this.tbExchange = new System.Windows.Forms.TextBox();
             this.lblSymbol = new System.Windows.Forms.Label();
             this.tbSymbol = new System.Windows.Forms.TextBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.tbTimeFrame = new System.Windows.Forms.TextBox();
+            this.btnSubmit = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.comboStrategy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tbDescription = new System.Windows.Forms.RichTextBox();
+            this.numTimeFrame = new System.Windows.Forms.NumericUpDown();
             this.menuStrip1.SuspendLayout();
             this.chartGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OurChart)).BeginInit();
@@ -66,6 +66,7 @@
             this.logGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).BeginInit();
             this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numTimeFrame)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -142,17 +143,17 @@
             this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.OurChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.OurChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.OurChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.OurChart.Legends.Add(legend1);
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Price";
-            this.OurChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Price";
+            this.OurChart.Series.Add(series1);
             this.OurChart.Size = new System.Drawing.Size(478, 331);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
@@ -161,12 +162,13 @@
             // 
             this.algoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.algoGroupBox.Controls.Add(this.numTimeFrame);
             this.algoGroupBox.Controls.Add(this.groupBox1);
-            this.algoGroupBox.Controls.Add(this.button1);
-            this.algoGroupBox.Controls.Add(this.tbTimeFrame);
+            this.algoGroupBox.Controls.Add(this.btnSubmit);
             this.algoGroupBox.Controls.Add(this.label1);
             this.algoGroupBox.Controls.Add(this.comboStrategy);
             this.algoGroupBox.Controls.Add(this.label3);
+            this.algoGroupBox.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.algoGroupBox.Location = new System.Drawing.Point(510, 96);
             this.algoGroupBox.Name = "algoGroupBox";
             this.algoGroupBox.Size = new System.Drawing.Size(448, 511);
@@ -278,27 +280,20 @@
             this.tbSymbol.TabIndex = 11;
             this.tbSymbol.Text = "MSFT";
             // 
-            // button1
+            // btnSubmit
             // 
-            this.button1.Location = new System.Drawing.Point(135, 82);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 24;
-            this.button1.Text = "Submit";
-            this.button1.UseVisualStyleBackColor = true;
-            // 
-            // tbTimeFrame
-            // 
-            this.tbTimeFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbTimeFrame.Location = new System.Drawing.Point(78, 54);
-            this.tbTimeFrame.Name = "tbTimeFrame";
-            this.tbTimeFrame.Size = new System.Drawing.Size(132, 22);
-            this.tbTimeFrame.TabIndex = 23;
+            this.btnSubmit.Location = new System.Drawing.Point(135, 82);
+            this.btnSubmit.Name = "btnSubmit";
+            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
+            this.btnSubmit.TabIndex = 24;
+            this.btnSubmit.Text = "Submit";
+            this.btnSubmit.UseVisualStyleBackColor = true;
+            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 54);
+            this.label1.Location = new System.Drawing.Point(6, 50);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(62, 13);
             this.label1.TabIndex = 22;
@@ -325,7 +320,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 20);
+            this.label3.Location = new System.Drawing.Point(6, 20);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 20;
@@ -352,6 +347,13 @@
             this.tbDescription.Size = new System.Drawing.Size(424, 112);
             this.tbDescription.TabIndex = 0;
             this.tbDescription.Text = "Summary of strategy will appear here once selected.";
+            // 
+            // numTimeFrame
+            // 
+            this.numTimeFrame.Location = new System.Drawing.Point(78, 50);
+            this.numTimeFrame.Name = "numTimeFrame";
+            this.numTimeFrame.Size = new System.Drawing.Size(133, 20);
+            this.numTimeFrame.TabIndex = 27;
             // 
             // Form1
             // 
@@ -382,6 +384,7 @@
             this.logGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).EndInit();
             this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.numTimeFrame)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -411,11 +414,11 @@
         private System.Windows.Forms.TextBox tbSymbol;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.RichTextBox tbDescription;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.TextBox tbTimeFrame;
+        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox comboStrategy;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.NumericUpDown numTimeFrame;
     }
 }
 

@@ -218,7 +218,7 @@ namespace VTB
             if (comboStrategy.Text.ToString() == "SMA Crossover")
             {
                 tbDescription.Text = "This strategy will look for bullish trends, buying if the current price crosses above the Simple Moving Avg.";
-                strategyToApply = "smaCrossover";
+                strategyToApply = "smaCrossover"; 
             }
             else if (comboStrategy.Text.ToString() == "SMA Crossunder")
             {
@@ -245,66 +245,60 @@ namespace VTB
                 tbDescription.Text = "This strategy will short a company if the RSI is greater than 70, indicating the stock had been over bought";
                 strategyToApply = "rsiOverBought";
             }
-
+            
         }// end comboStrategy_SelectedIndexChanged
 
         private void btnSubmit_Click(object sender, EventArgs e)
         {
-
             double[] priceArray = listOfPrices.ToArray();
+            int timeFrame = Convert.ToInt32(numTimeFrame.Value);
 
             if (strategyToApply == "smaCrossover")
             {
                 int outBegIdxSma, outNbElementSma;
-                int timeFrameSma = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputSma = new double[priceArray.Length];
 
-                Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrameSma, out outBegIdxSma, out outNbElementSma, outputSma);
+                Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
             }
 
             else if (strategyToApply == "smaCrossunder")
             {
                 int outBegIdxSma, outNbElementSma;
-                int timeFrameSma = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputSma = new double[priceArray.Length];
 
-                Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrameSma, out outBegIdxSma, out outNbElementSma, outputSma);
+                Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
             }
 
             else if (strategyToApply == "emaCrossover")
             {
                 int outBegIdxEma, outNbElementEma;
-                int timeFrameEma = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputEma = new double[priceArray.Length];
 
-                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrameEma, out outBegIdxEma, out outNbElementEma, outputEma);
+                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
             }
 
             else if (strategyToApply == "emaCrossunder")
             {
                 int outBegIdxEma, outNbElementEma;
-                int timeFrameEma = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputEma = new double[priceArray.Length];
 
-                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrameEma, out outBegIdxEma, out outNbElementEma, outputEma);
+                Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
             }
 
             else if (strategyToApply == "rsiOverSold")
             {
                 int outBegIdxRsi, outNbElementRsi;
-                int timeFrameRsi = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputRsi = new double[priceArray.Length];
 
-                Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrameRsi, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+                Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
             }
 
             else if (strategyToApply == "rsiOverBought")
             {
                 int outBegIdxRsi, outNbElementRsi;
-                int timeFrameRsi = Convert.ToInt32(tbTimeFrame.Text.Split(',')[1]);
                 double[] outputRsi = new double[priceArray.Length];
 
-                Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrameRsi, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+                Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
             }
 
         }// end btnSubmit_Click
