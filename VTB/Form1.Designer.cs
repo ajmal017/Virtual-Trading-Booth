@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -42,9 +42,6 @@
             this.chartGroupBox = new System.Windows.Forms.GroupBox();
             this.OurChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.algoGroupBox = new System.Windows.Forms.GroupBox();
-            this.btnSubmit = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.comboAction = new System.Windows.Forms.ComboBox();
             this.logGroupBox = new System.Windows.Forms.GroupBox();
             this.listBox1 = new System.Windows.Forms.ListBox();
             this.btnConnect = new System.Windows.Forms.Button();
@@ -55,35 +52,20 @@
             this.tbExchange = new System.Windows.Forms.TextBox();
             this.lblSymbol = new System.Windows.Forms.Label();
             this.tbSymbol = new System.Windows.Forms.TextBox();
-            this.tbOrderId = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.tbTimeFrame = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.comboStrategy = new System.Windows.Forms.ComboBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.tbQuantity = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.tbSmaTimeFrame = new System.Windows.Forms.TextBox();
-            this.ddSmaOperator = new System.Windows.Forms.ComboBox();
-            this.tbValSma = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.tbEmaTimeFrame = new System.Windows.Forms.TextBox();
-            this.ddEmaOperator = new System.Windows.Forms.ComboBox();
-            this.tbValEma = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.tbRsiTimeFrame = new System.Windows.Forms.TextBox();
-            this.ddRsiOperator = new System.Windows.Forms.ComboBox();
-            this.tbValRsi = new System.Windows.Forms.TextBox();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.tbDescription = new System.Windows.Forms.RichTextBox();
             this.menuStrip1.SuspendLayout();
             this.chartGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OurChart)).BeginInit();
             this.algoGroupBox.SuspendLayout();
             this.logGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -160,17 +142,17 @@
             this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.OurChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.OurChart.Legends.Add(legend2);
+            chartArea1.Name = "ChartArea1";
+            this.OurChart.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.OurChart.Legends.Add(legend1);
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Price";
-            this.OurChart.Series.Add(series2);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series1.Legend = "Legend1";
+            series1.Name = "Price";
+            this.OurChart.Series.Add(series1);
             this.OurChart.Size = new System.Drawing.Size(478, 331);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
@@ -179,54 +161,18 @@
             // 
             this.algoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.algoGroupBox.Controls.Add(this.tableLayoutPanel1);
-            this.algoGroupBox.Controls.Add(this.tbQuantity);
-            this.algoGroupBox.Controls.Add(this.label4);
-            this.algoGroupBox.Controls.Add(this.label3);
-            this.algoGroupBox.Controls.Add(this.label2);
-            this.algoGroupBox.Controls.Add(this.tbOrderId);
-            this.algoGroupBox.Controls.Add(this.btnSubmit);
+            this.algoGroupBox.Controls.Add(this.groupBox1);
+            this.algoGroupBox.Controls.Add(this.button1);
+            this.algoGroupBox.Controls.Add(this.tbTimeFrame);
             this.algoGroupBox.Controls.Add(this.label1);
-            this.algoGroupBox.Controls.Add(this.comboAction);
+            this.algoGroupBox.Controls.Add(this.comboStrategy);
+            this.algoGroupBox.Controls.Add(this.label3);
             this.algoGroupBox.Location = new System.Drawing.Point(510, 96);
             this.algoGroupBox.Name = "algoGroupBox";
             this.algoGroupBox.Size = new System.Drawing.Size(448, 511);
             this.algoGroupBox.TabIndex = 2;
             this.algoGroupBox.TabStop = false;
             this.algoGroupBox.Text = "Algorithm";
-            // 
-            // btnSubmit
-            // 
-            this.btnSubmit.Location = new System.Drawing.Point(367, 471);
-            this.btnSubmit.Name = "btnSubmit";
-            this.btnSubmit.Size = new System.Drawing.Size(75, 23);
-            this.btnSubmit.TabIndex = 17;
-            this.btnSubmit.Text = "Submit";
-            this.btnSubmit.UseVisualStyleBackColor = true;
-            this.btnSubmit.Click += new System.EventHandler(this.btnSubmit_Click);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(189, 47);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(28, 20);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "IF:";
-            // 
-            // comboAction
-            // 
-            this.comboAction.CausesValidation = false;
-            this.comboAction.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboAction.FormattingEnabled = true;
-            this.comboAction.Items.AddRange(new object[] {
-            "BUY",
-            "SELL"});
-            this.comboAction.Location = new System.Drawing.Point(62, 20);
-            this.comboAction.Name = "comboAction";
-            this.comboAction.Size = new System.Drawing.Size(121, 21);
-            this.comboAction.TabIndex = 0;
             // 
             // logGroupBox
             // 
@@ -331,234 +277,79 @@
             this.tbSymbol.TabIndex = 11;
             this.tbSymbol.Text = "MSFT";
             // 
-            // tbOrderId
+            // button1
             // 
-            this.tbOrderId.Location = new System.Drawing.Point(261, 471);
-            this.tbOrderId.Name = "tbOrderId";
-            this.tbOrderId.Size = new System.Drawing.Size(100, 20);
-            this.tbOrderId.TabIndex = 18;
+            this.button1.Location = new System.Drawing.Point(135, 82);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 24;
+            this.button1.Text = "Submit";
+            this.button1.UseVisualStyleBackColor = true;
             // 
-            // label2
+            // tbTimeFrame
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(205, 478);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(50, 13);
-            this.label2.TabIndex = 19;
-            this.label2.Text = "Order ID:";
+            this.tbTimeFrame.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbTimeFrame.Location = new System.Drawing.Point(78, 54);
+            this.tbTimeFrame.Name = "tbTimeFrame";
+            this.tbTimeFrame.Size = new System.Drawing.Size(132, 22);
+            this.tbTimeFrame.TabIndex = 23;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 54);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 13);
+            this.label1.TabIndex = 22;
+            this.label1.Text = "Time Frame";
+            // 
+            // comboStrategy
+            // 
+            this.comboStrategy.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboStrategy.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboStrategy.FormattingEnabled = true;
+            this.comboStrategy.Items.AddRange(new object[] {
+            "SMA Crossover",
+            "SMA Crossunder",
+            "EMA Crossover",
+            "EMA Crossunder",
+            "RSI Over Sold",
+            "RSI Over Bought"});
+            this.comboStrategy.Location = new System.Drawing.Point(78, 20);
+            this.comboStrategy.Name = "comboStrategy";
+            this.comboStrategy.Size = new System.Drawing.Size(133, 24);
+            this.comboStrategy.TabIndex = 21;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(7, 20);
+            this.label3.Location = new System.Drawing.Point(10, 20);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(40, 13);
+            this.label3.Size = new System.Drawing.Size(46, 13);
             this.label3.TabIndex = 20;
-            this.label3.Text = "Action:";
+            this.label3.Text = "Strategy";
             // 
-            // label4
+            // groupBox1
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(7, 47);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 13);
-            this.label4.TabIndex = 21;
-            this.label4.Text = "Quantity:";
+            this.groupBox1.Controls.Add(this.tbDescription);
+            this.groupBox1.Location = new System.Drawing.Point(6, 366);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(436, 137);
+            this.groupBox1.TabIndex = 25;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Description";
             // 
-            // tbQuantity
+            // tbDescription
             // 
-            this.tbQuantity.Location = new System.Drawing.Point(62, 47);
-            this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(121, 20);
-            this.tbQuantity.TabIndex = 22;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(4, 25);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(47, 20);
-            this.label5.TabIndex = 23;
-            this.label5.Text = "SMA";
-            // 
-            // tbSmaTimeFrame
-            // 
-            this.tbSmaTimeFrame.Location = new System.Drawing.Point(100, 28);
-            this.tbSmaTimeFrame.Name = "tbSmaTimeFrame";
-            this.tbSmaTimeFrame.Size = new System.Drawing.Size(50, 20);
-            this.tbSmaTimeFrame.TabIndex = 24;
-            // 
-            // ddSmaOperator
-            // 
-            this.ddSmaOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddSmaOperator.FormattingEnabled = true;
-            this.ddSmaOperator.Items.AddRange(new object[] {
-            "",
-            "<",
-            "<=",
-            ">",
-            ">="});
-            this.ddSmaOperator.Location = new System.Drawing.Point(228, 28);
-            this.ddSmaOperator.Name = "ddSmaOperator";
-            this.ddSmaOperator.Size = new System.Drawing.Size(67, 21);
-            this.ddSmaOperator.TabIndex = 25;
-            // 
-            // tbValSma
-            // 
-            this.tbValSma.Location = new System.Drawing.Point(326, 28);
-            this.tbValSma.Name = "tbValSma";
-            this.tbValSma.Size = new System.Drawing.Size(100, 20);
-            this.tbValSma.TabIndex = 26;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(4, 60);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(47, 20);
-            this.label6.TabIndex = 27;
-            this.label6.Text = "EMA";
-            // 
-            // tbEmaTimeFrame
-            // 
-            this.tbEmaTimeFrame.Location = new System.Drawing.Point(100, 63);
-            this.tbEmaTimeFrame.Name = "tbEmaTimeFrame";
-            this.tbEmaTimeFrame.Size = new System.Drawing.Size(50, 20);
-            this.tbEmaTimeFrame.TabIndex = 28;
-            // 
-            // ddEmaOperator
-            // 
-            this.ddEmaOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddEmaOperator.FormattingEnabled = true;
-            this.ddEmaOperator.Items.AddRange(new object[] {
-            "",
-            "<",
-            "<=",
-            ">",
-            ">="});
-            this.ddEmaOperator.Location = new System.Drawing.Point(228, 63);
-            this.ddEmaOperator.Name = "ddEmaOperator";
-            this.ddEmaOperator.Size = new System.Drawing.Size(67, 21);
-            this.ddEmaOperator.TabIndex = 29;
-            // 
-            // tbValEma
-            // 
-            this.tbValEma.Location = new System.Drawing.Point(326, 63);
-            this.tbValEma.Name = "tbValEma";
-            this.tbValEma.Size = new System.Drawing.Size(100, 20);
-            this.tbValEma.TabIndex = 30;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(4, 1);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(48, 13);
-            this.label7.TabIndex = 31;
-            this.label7.Text = "Indicator";
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.CellBorderStyle = System.Windows.Forms.TableLayoutPanelCellBorderStyle.Single;
-            this.tableLayoutPanel1.ColumnCount = 4;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 42.85714F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 57.14286F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 97F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 111F));
-            this.tableLayoutPanel1.Controls.Add(this.label5, 0, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbValEma, 3, 2);
-            this.tableLayoutPanel1.Controls.Add(this.label7, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.ddEmaOperator, 2, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tbSmaTimeFrame, 1, 1);
-            this.tableLayoutPanel1.Controls.Add(this.tbEmaTimeFrame, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.ddSmaOperator, 2, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label6, 0, 2);
-            this.tableLayoutPanel1.Controls.Add(this.tbValSma, 3, 1);
-            this.tableLayoutPanel1.Controls.Add(this.label8, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label9, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label10, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label11, 0, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tbRsiTimeFrame, 1, 3);
-            this.tableLayoutPanel1.Controls.Add(this.ddRsiOperator, 2, 3);
-            this.tableLayoutPanel1.Controls.Add(this.tbValRsi, 3, 3);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(6, 73);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 5;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 40.38462F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 59.61538F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 32F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 34F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 105F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(436, 235);
-            this.tableLayoutPanel1.TabIndex = 32;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(100, 1);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(62, 13);
-            this.label8.TabIndex = 32;
-            this.label8.Text = "Time Frame";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(228, 1);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(48, 13);
-            this.label9.TabIndex = 33;
-            this.label9.Text = "Operator";
-            // 
-            // label10
-            // 
-            this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(326, 1);
-            this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(34, 13);
-            this.label10.TabIndex = 34;
-            this.label10.Text = "Value";
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(4, 93);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(40, 20);
-            this.label11.TabIndex = 35;
-            this.label11.Text = "RSI";
-            // 
-            // tbRsiTimeFrame
-            // 
-            this.tbRsiTimeFrame.Location = new System.Drawing.Point(100, 96);
-            this.tbRsiTimeFrame.Name = "tbRsiTimeFrame";
-            this.tbRsiTimeFrame.Size = new System.Drawing.Size(50, 20);
-            this.tbRsiTimeFrame.TabIndex = 36;
-            // 
-            // ddRsiOperator
-            // 
-            this.ddRsiOperator.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.ddRsiOperator.FormattingEnabled = true;
-            this.ddRsiOperator.Items.AddRange(new object[] {
-            "",
-            "<",
-            "<=",
-            ">",
-            ">="});
-            this.ddRsiOperator.Location = new System.Drawing.Point(228, 96);
-            this.ddRsiOperator.Name = "ddRsiOperator";
-            this.ddRsiOperator.Size = new System.Drawing.Size(67, 21);
-            this.ddRsiOperator.TabIndex = 37;
-            // 
-            // tbValRsi
-            // 
-            this.tbValRsi.Location = new System.Drawing.Point(326, 96);
-            this.tbValRsi.Name = "tbValRsi";
-            this.tbValRsi.Size = new System.Drawing.Size(100, 20);
-            this.tbValRsi.TabIndex = 38;
+            this.tbDescription.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tbDescription.Cursor = System.Windows.Forms.Cursors.Default;
+            this.tbDescription.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tbDescription.Location = new System.Drawing.Point(6, 19);
+            this.tbDescription.Name = "tbDescription";
+            this.tbDescription.ReadOnly = true;
+            this.tbDescription.Size = new System.Drawing.Size(424, 112);
+            this.tbDescription.TabIndex = 0;
+            this.tbDescription.Text = "Summary of strategy will appear here once selected.";
             // 
             // Form1
             // 
@@ -588,8 +379,7 @@
             this.algoGroupBox.PerformLayout();
             this.logGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).EndInit();
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -610,9 +400,6 @@
         private System.Windows.Forms.ToolStripMenuItem exitToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem configToolStripMenuItem;
         private AxTWSLib.AxTws axTws1;
-        private System.Windows.Forms.ComboBox comboAction;
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button btnSubmit;
         private System.Windows.Forms.ToolStripMenuItem exchangeToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sMARTToolStripMenuItem;
         private System.Windows.Forms.Button btnReconnect;
@@ -620,28 +407,13 @@
         private System.Windows.Forms.TextBox tbExchange;
         private System.Windows.Forms.Label lblSymbol;
         private System.Windows.Forms.TextBox tbSymbol;
-        private System.Windows.Forms.TextBox tbQuantity;
-        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.RichTextBox tbDescription;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.TextBox tbTimeFrame;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ComboBox comboStrategy;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox tbOrderId;
-        private System.Windows.Forms.TextBox tbValSma;
-        private System.Windows.Forms.ComboBox ddSmaOperator;
-        private System.Windows.Forms.TextBox tbSmaTimeFrame;
-        private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox tbValEma;
-        private System.Windows.Forms.ComboBox ddEmaOperator;
-        private System.Windows.Forms.TextBox tbEmaTimeFrame;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Label label10;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox tbRsiTimeFrame;
-        private System.Windows.Forms.ComboBox ddRsiOperator;
-        private System.Windows.Forms.TextBox tbValRsi;
     }
 }
 
