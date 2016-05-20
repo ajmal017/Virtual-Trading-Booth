@@ -28,20 +28,30 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea3 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend3 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea4 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend4 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.configToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exchangeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sMARTToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nASDAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.nYSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.chartGroupBox = new System.Windows.Forms.GroupBox();
             this.OurChart = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.algoGroupBox = new System.Windows.Forms.GroupBox();
+            this.tbQuantity = new System.Windows.Forms.TextBox();
+            this.tbAction = new System.Windows.Forms.TextBox();
+            this.tbOrderType = new System.Windows.Forms.TextBox();
+            this.comboOrderType = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
             this.tbLimitPrice = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.comboAction = new System.Windows.Forms.ComboBox();
@@ -67,13 +77,14 @@
             this.tbPrimaryExchange = new System.Windows.Forms.TextBox();
             this.lblSymbol = new System.Windows.Forms.Label();
             this.tbSymbol = new System.Windows.Forms.TextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.comboOrderType = new System.Windows.Forms.ComboBox();
-            this.tbOrderType = new System.Windows.Forms.TextBox();
-            this.tbAction = new System.Windows.Forms.TextBox();
-            this.tbQuantity = new System.Windows.Forms.TextBox();
-            this.nASDAQToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.nYSEToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.chtStocks = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.tbDate = new System.Windows.Forms.TextBox();
+            this.tbBars = new System.Windows.Forms.TextBox();
+            this.tbDuration = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.chartGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.OurChart)).BeginInit();
@@ -83,6 +94,7 @@
             this.groupBox1.SuspendLayout();
             this.logGroupBox.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtStocks)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -126,7 +138,7 @@
             this.nASDAQToolStripMenuItem,
             this.nYSEToolStripMenuItem});
             this.exchangeToolStripMenuItem.Name = "exchangeToolStripMenuItem";
-            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.exchangeToolStripMenuItem.Text = "Exchange";
             // 
             // sMARTToolStripMenuItem
@@ -134,8 +146,20 @@
             this.sMARTToolStripMenuItem.Checked = true;
             this.sMARTToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sMARTToolStripMenuItem.Name = "sMARTToolStripMenuItem";
-            this.sMARTToolStripMenuItem.Size = new System.Drawing.Size(112, 22);
+            this.sMARTToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.sMARTToolStripMenuItem.Text = "SMART";
+            // 
+            // nASDAQToolStripMenuItem
+            // 
+            this.nASDAQToolStripMenuItem.Name = "nASDAQToolStripMenuItem";
+            this.nASDAQToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.nASDAQToolStripMenuItem.Text = "NASDAQ";
+            // 
+            // nYSEToolStripMenuItem
+            // 
+            this.nYSEToolStripMenuItem.Name = "nYSEToolStripMenuItem";
+            this.nYSEToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
+            this.nYSEToolStripMenuItem.Text = "NYSE";
             // 
             // helpToolStripMenuItem
             // 
@@ -161,17 +185,17 @@
             this.OurChart.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            chartArea2.Name = "ChartArea1";
-            this.OurChart.ChartAreas.Add(chartArea2);
-            legend2.Name = "Legend1";
-            this.OurChart.Legends.Add(legend2);
+            chartArea3.Name = "ChartArea1";
+            this.OurChart.ChartAreas.Add(chartArea3);
+            legend3.Name = "Legend1";
+            this.OurChart.Legends.Add(legend3);
             this.OurChart.Location = new System.Drawing.Point(7, 20);
             this.OurChart.Name = "OurChart";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Price";
-            this.OurChart.Series.Add(series2);
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Legend = "Legend1";
+            series3.Name = "Price";
+            this.OurChart.Series.Add(series3);
             this.OurChart.Size = new System.Drawing.Size(478, 331);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
@@ -180,6 +204,14 @@
             // 
             this.algoGroupBox.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.algoGroupBox.Controls.Add(this.label11);
+            this.algoGroupBox.Controls.Add(this.label10);
+            this.algoGroupBox.Controls.Add(this.label9);
+            this.algoGroupBox.Controls.Add(this.label8);
+            this.algoGroupBox.Controls.Add(this.tbDuration);
+            this.algoGroupBox.Controls.Add(this.tbBars);
+            this.algoGroupBox.Controls.Add(this.tbDate);
+            this.algoGroupBox.Controls.Add(this.chtStocks);
             this.algoGroupBox.Controls.Add(this.tbQuantity);
             this.algoGroupBox.Controls.Add(this.tbAction);
             this.algoGroupBox.Controls.Add(this.tbOrderType);
@@ -206,6 +238,49 @@
             this.algoGroupBox.TabIndex = 2;
             this.algoGroupBox.TabStop = false;
             this.algoGroupBox.Text = "Algorithm";
+            // 
+            // tbQuantity
+            // 
+            this.tbQuantity.Location = new System.Drawing.Point(292, 20);
+            this.tbQuantity.Name = "tbQuantity";
+            this.tbQuantity.Size = new System.Drawing.Size(120, 20);
+            this.tbQuantity.TabIndex = 40;
+            // 
+            // tbAction
+            // 
+            this.tbAction.Location = new System.Drawing.Point(292, 73);
+            this.tbAction.Name = "tbAction";
+            this.tbAction.Size = new System.Drawing.Size(120, 20);
+            this.tbAction.TabIndex = 39;
+            this.tbAction.Text = "BUY";
+            // 
+            // tbOrderType
+            // 
+            this.tbOrderType.Location = new System.Drawing.Point(293, 126);
+            this.tbOrderType.Name = "tbOrderType";
+            this.tbOrderType.Size = new System.Drawing.Size(119, 20);
+            this.tbOrderType.TabIndex = 38;
+            // 
+            // comboOrderType
+            // 
+            this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboOrderType.FormattingEnabled = true;
+            this.comboOrderType.Items.AddRange(new object[] {
+            "MKT",
+            "LMT"});
+            this.comboOrderType.Location = new System.Drawing.Point(292, 214);
+            this.comboOrderType.Name = "comboOrderType";
+            this.comboOrderType.Size = new System.Drawing.Size(120, 21);
+            this.comboOrderType.TabIndex = 37;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(226, 128);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(60, 13);
+            this.label7.TabIndex = 36;
+            this.label7.Text = "Order Type";
             // 
             // tbLimitPrice
             // 
@@ -410,6 +485,7 @@
             this.axTws1.Size = new System.Drawing.Size(133, 18);
             this.axTws1.TabIndex = 6;
             this.axTws1.tickPrice += new AxTWSLib._DTwsEvents_tickPriceEventHandler(this.axTws1_tickPrice);
+            this.axTws1.historicalData += new AxTWSLib._DTwsEvents_historicalDataEventHandler(this.axTws1_historicalData);
             this.axTws1.realtimeBar += new AxTWSLib._DTwsEvents_realtimeBarEventHandler(this.axTws1_realtimeBar);
             // 
             // btnReconnect
@@ -456,60 +532,84 @@
             this.tbSymbol.TabIndex = 11;
             this.tbSymbol.Text = "MSFT";
             // 
-            // label7
+            // chtStocks
             // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(226, 128);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(60, 13);
-            this.label7.TabIndex = 36;
-            this.label7.Text = "Order Type";
+            chartArea4.Name = "ChartArea1";
+            this.chtStocks.ChartAreas.Add(chartArea4);
+            legend4.Name = "Legend1";
+            this.chtStocks.Legends.Add(legend4);
+            this.chtStocks.Location = new System.Drawing.Point(12, 180);
+            this.chtStocks.Name = "chtStocks";
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Series1";
+            this.chtStocks.Series.Add(series4);
+            this.chtStocks.Size = new System.Drawing.Size(257, 156);
+            this.chtStocks.TabIndex = 41;
+            this.chtStocks.Text = "chart1";
             // 
-            // comboOrderType
+            // tbDate
             // 
-            this.comboOrderType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboOrderType.FormattingEnabled = true;
-            this.comboOrderType.Items.AddRange(new object[] {
-            "MKT",
-            "LMT"});
-            this.comboOrderType.Location = new System.Drawing.Point(292, 214);
-            this.comboOrderType.Name = "comboOrderType";
-            this.comboOrderType.Size = new System.Drawing.Size(120, 21);
-            this.comboOrderType.TabIndex = 37;
+            this.tbDate.Location = new System.Drawing.Point(12, 154);
+            this.tbDate.Name = "tbDate";
+            this.tbDate.Size = new System.Drawing.Size(88, 20);
+            this.tbDate.TabIndex = 42;
+            this.tbDate.Text = "20160429 16:00:00";
             // 
-            // tbOrderType
+            // tbBars
             // 
-            this.tbOrderType.Location = new System.Drawing.Point(293, 126);
-            this.tbOrderType.Name = "tbOrderType";
-            this.tbOrderType.Size = new System.Drawing.Size(119, 20);
-            this.tbOrderType.TabIndex = 38;
+            this.tbBars.Location = new System.Drawing.Point(106, 154);
+            this.tbBars.Name = "tbBars";
+            this.tbBars.Size = new System.Drawing.Size(51, 20);
+            this.tbBars.TabIndex = 43;
+            this.tbBars.Text = "1 Day";
             // 
-            // tbAction
+            // tbDuration
             // 
-            this.tbAction.Location = new System.Drawing.Point(292, 73);
-            this.tbAction.Name = "tbAction";
-            this.tbAction.Size = new System.Drawing.Size(120, 20);
-            this.tbAction.TabIndex = 39;
-            this.tbAction.Text = "BUY";
+            this.tbDuration.Location = new System.Drawing.Point(163, 154);
+            this.tbDuration.Name = "tbDuration";
+            this.tbDuration.Size = new System.Drawing.Size(51, 20);
+            this.tbDuration.TabIndex = 44;
+            this.tbDuration.Text = "1 M";
             // 
-            // tbQuantity
+            // label8
             // 
-            this.tbQuantity.Location = new System.Drawing.Point(292, 20);
-            this.tbQuantity.Name = "tbQuantity";
-            this.tbQuantity.Size = new System.Drawing.Size(120, 20);
-            this.tbQuantity.TabIndex = 40;
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(14, 133);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(86, 13);
+            this.label8.TabIndex = 45;
+            this.label8.Text = "End Date / Time";
             // 
-            // nASDAQToolStripMenuItem
+            // label9
             // 
-            this.nASDAQToolStripMenuItem.Name = "nASDAQToolStripMenuItem";
-            this.nASDAQToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.nASDAQToolStripMenuItem.Text = "NASDAQ";
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(117, 133);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(28, 13);
+            this.label9.TabIndex = 46;
+            this.label9.Text = "Bars";
             // 
-            // nYSEToolStripMenuItem
+            // label10
             // 
-            this.nYSEToolStripMenuItem.Name = "nYSEToolStripMenuItem";
-            this.nYSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.nYSEToolStripMenuItem.Text = "NYSE";
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(164, 133);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(47, 13);
+            this.label10.TabIndex = 47;
+            this.label10.Text = "Duration";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Font = new System.Drawing.Font("Modern No. 20", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label11.ForeColor = System.Drawing.SystemColors.WindowText;
+            this.label11.Location = new System.Drawing.Point(60, 104);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(110, 15);
+            this.label11.TabIndex = 48;
+            this.label11.Text = "Historical Chart";
             // 
             // Form1
             // 
@@ -542,6 +642,7 @@
             this.groupBox1.ResumeLayout(false);
             this.logGroupBox.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axTws1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chtStocks)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -591,6 +692,14 @@
         private System.Windows.Forms.TextBox tbQuantity;
         private System.Windows.Forms.ToolStripMenuItem nASDAQToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem nYSEToolStripMenuItem;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chtStocks;
+        private System.Windows.Forms.TextBox tbDuration;
+        private System.Windows.Forms.TextBox tbBars;
+        private System.Windows.Forms.TextBox tbDate;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.Label label11;
     }
 }
 

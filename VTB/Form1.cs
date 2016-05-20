@@ -20,8 +20,8 @@ namespace VTB
         System.Collections.Generic.List<double> listOfCloses;
         string strategyToApply;
 
-        public Form1()            
-        {   
+        public Form1()
+        {
             // this is the list of prices which will be shown on the chart
             listOfPrices = new System.Collections.Generic.List<double>();
             listOfOpens = new System.Collections.Generic.List<double>();
@@ -79,17 +79,17 @@ namespace VTB
 
         private void btnDisconnect_Click(object sender, EventArgs e)
         {
-           // Cancel the request for market data
-           // Parameters are:
-           // - OrderID  This should be the identifier used in the call to reqMktData
-           // axTws1.cancelMktData(0);
+            // Cancel the request for market data
+            // Parameters are:
+            // - OrderID  This should be the identifier used in the call to reqMktData
+            // axTws1.cancelMktData(0);
 
-           // Disconnect from the IB Data Server
+            // Disconnect from the IB Data Server
             axTws1.disconnect();
         }// End Code Segment for Disconnect Button
 
         private void btnReconnect_Click(object sender, EventArgs e)
-        {   
+        {
             /* 
             listOfPrices.Clear();
             OurChart.Series["Price"].Points.Clear();
@@ -170,13 +170,27 @@ namespace VTB
             // Get real time/streaming prices
             axTws1.reqMktDataEx(0, ContractInfo, "", 0, mktDataOptions);
 
+
+
+            // Now call reqHistoricalDataEx with parameters:
+            // tickerId, Contract, endDateTime, durationStr, barSize, WhatToShow, 
+            // useRTH, formatDate
+            // for api version 9.71
+            TWSLib.ITagValueList ChartOptions = axTws1.createTagValueList();
+
+            axTws1.reqHistoricalDataEx(1, ContractInfo,
+                 this.tbDate.Text,
+                 this.tbDuration.Text,
+                 this.tbBars.Text,
+                 "TRADES", 1, 1, ChartOptions);
+
         }// end Reconnect code segment.
 
         private void axTws1_tickPrice(object sender, AxTWSLib._DTwsEvents_tickPriceEvent e)
-        {   
+        {
             // If the price is the Last Price, add it to the list of prices
-            if(e.tickType == 4)
-            {   
+            if (e.tickType == 4)
+            {
                 listOfPrices.Add(e.price);
                 /* Not this is currently just adding the price from connection to the chart, we might need
                  more data for functions */
@@ -225,7 +239,7 @@ namespace VTB
             if (comboStrategy.Text.ToString() == "SMA Crossover")
             {
                 tbDescription.Text = "This strategy will look for bullish trends, indicated by the current price crossing above the Simple Moving Avg.";
-                strategyToApply = "smaCrossover"; 
+                strategyToApply = "smaCrossover";
             }
             else if (comboStrategy.Text.ToString() == "SMA Crossunder")
             {
@@ -252,7 +266,7 @@ namespace VTB
                 tbDescription.Text = "This strategy looks to see if the RSI is greater than 70, indicating the stock had been over bought";
                 strategyToApply = "rsiOverBought";
             }
-            
+
         }// end comboStrategy_SelectedIndexChanged
 
         private void btnSubmit_Click(object sender, EventArgs e)
@@ -260,7 +274,7 @@ namespace VTB
             // For Ta-Lib
             double[] priceArray = listOfPrices.ToArray();
             int timeFrame = Convert.ToInt32(nbTimeFrame.Value);
-            
+
             // For IB
             TWSLib.IContract ContractInfo = axTws1.createContract();
             TWSLib.IOrder OrderInfo = axTws1.createOrder();
@@ -296,7 +310,7 @@ namespace VTB
                 double[] outputSma = new double[priceArray.Length];
 
                 Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
-               
+
                 if (outputSma.Last() > listOfPrices.Last())
                 {
                     this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
@@ -322,7 +336,7 @@ namespace VTB
                 double[] outputEma = new double[priceArray.Length];
 
                 Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
-                
+
                 if (outputEma.Last() < listOfPrices.Last())
                 {
                     this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
@@ -348,7 +362,7 @@ namespace VTB
                 double[] outputRsi = new double[priceArray.Length];
 
                 Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
-                
+
                 if (outputRsi.Last() > 70)
                 {
                     this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
@@ -357,5 +371,33 @@ namespace VTB
 
         }// end btnSubmit_Click
 
+        private void axTws1_historicalData(object sender, AxTWSLib._DTwsEvents_historicalDataEvent e)
+        {
+
+            // Handle the incoming historical data records. 
+            // Object e contains:
+            // e.date      Date (and time) of the historical data bar
+            // e.open      The opening price of the bar/interval
+            // e.high      The high price for the bar/interval
+            // e.low       The low price for the bar/interval 
+            // e.close     The closing price of the bar/interval
+            // e.volume    The volume (number of shares/contract) for the bar/interval
+            // e.wAP       The average price during the bar/interval 
+            string OutputString;
+            // Concatenate all of the required fields into the OutputString
+            OutputString = e.date + " " +
+                           e.open.ToString("N2") + " " +
+                           e.close.ToString("N2") + " " +
+                           e.volume;
+            // Add the output string to the ListBox
+            listBox1.Items.Add(OutputString);
+
+            // Add data points to the chart
+            if (e.close > 0.0)
+            {
+                chtStocks.Series["Series1"].Points.AddXY(e.date, e.close);
+
+            } //end  axTws1_historicalData
+        }
     }
 }
