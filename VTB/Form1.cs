@@ -18,6 +18,7 @@ namespace VTB
         System.Collections.Generic.List<double> listOfHighs;
         System.Collections.Generic.List<double> listOfLows;
         System.Collections.Generic.List<double> listOfCloses;
+        System.Collections.Generic.List<double> histCloses;
         string strategyToApply;
 
         public Form1()
@@ -28,6 +29,7 @@ namespace VTB
             listOfHighs = new System.Collections.Generic.List<double>();
             listOfLows = new System.Collections.Generic.List<double>();
             listOfCloses = new System.Collections.Generic.List<double>();
+            histCloses = new System.Collections.Generic.List<double>();
 
             InitializeComponent();
         }
@@ -339,6 +341,7 @@ namespace VTB
             // e.volume    The volume (number of shares/contract) for the bar/interval
             // e.wAP       The average price during the bar/interval 
             string OutputString;
+            
             // Concatenate all of the required fields into the OutputString
             OutputString = e.date + " " +
                            e.open.ToString("N2") + " " +
@@ -350,8 +353,11 @@ namespace VTB
             // Add data points to the chart
             if (e.close > 0.0)
             {
+                histCloses.Add(e.close);
 
                 chtStocks.Series["Series1"].Points.AddXY(e.date, e.close);
+                chtStocks.ChartAreas[0].AxisY.Minimum = histCloses.Min() - .5;
+                
 
             } //end  axTws1_historicalData
         }
