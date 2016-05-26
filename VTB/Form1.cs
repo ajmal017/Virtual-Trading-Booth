@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 using TicTacTec.TA.Library;
 
 namespace VTB
@@ -85,7 +86,11 @@ namespace VTB
             listOfPrices.Clear();
             listOfHighs.Clear();
             listOfLows.Clear();
+            histCloses.Clear();
             OurChart.Series["Price"].Points.Clear();
+            OurChart.Series["SMA-20 D"].Points.Clear();
+            OurChart.Series["EMA-20 D"].Points.Clear();
+            chtStocks.Series["Closing Prices"].Points.Clear();
 
             // Cancel the Initial Market data Connection when pressing connect
             axTws1.cancelMktData(0);
@@ -145,6 +150,11 @@ namespace VTB
                 OurChart.ChartAreas[0].AxisY.Maximum = listOfPrices.Max() + .05;
                 OurChart.ChartAreas[0].AxisY.Minimum = listOfPrices.Min() - .05;
                 OurChart.Series["Price"].Points.AddY(e.price);
+                if (listOfPrices.Count() > 19)
+                {
+                    OurChart.DataManipulator.FinancialFormula(FinancialFormula.MovingAverage, "20", "Price", "SMA-20 D");
+                    OurChart.DataManipulator.FinancialFormula(FinancialFormula.ExponentialMovingAverage, "20", "Price", "EMA-20 D");
+                }
             }
 
         }// end TWS tick price event handler
@@ -355,7 +365,7 @@ namespace VTB
             {
                 histCloses.Add(e.close);
 
-                chtStocks.Series["Series1"].Points.AddXY(e.date, e.close);
+                chtStocks.Series["Closing Prices"].Points.AddXY(e.date, e.close);
                 chtStocks.ChartAreas[0].AxisY.Minimum = histCloses.Min() - .5;
                 
 
@@ -365,6 +375,36 @@ namespace VTB
         private void Form1_Load(object sender, EventArgs e)
         {
 
+        }
+
+        private void tbQuantity_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = "Enter the quantity of stock you want purchased.";
+        }
+
+        private void tbOrderId_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = " Please enter a unique order ID";
+        }
+
+        private void tbAction_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = "Enter 'BUY' or 'SELL' depending on your choice. ";
+        }
+
+        private void tbLimitPrice_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = "If this is a Limit order then enter a price. If not please enter 0.0 .";
+        }
+
+        private void tbOrderType_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = "Please enter the type of order in an uppercase abbreviation.";
+        }
+
+        private void OurChart_Click(object sender, EventArgs e)
+        {
+            tbDescription.Text = "This is a chart that currently shows the Last Price, and shows the 20 day Simple Moving average and a 20 day Exponential Moving Average.";
         }
     }
 }

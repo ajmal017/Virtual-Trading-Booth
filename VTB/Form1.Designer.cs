@@ -31,9 +31,11 @@
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
             System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series3 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
             System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series4 = new System.Windows.Forms.DataVisualization.Charting.Series();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -133,7 +135,7 @@
             this.nASDAQToolStripMenuItem,
             this.nYSEToolStripMenuItem});
             this.exchangeToolStripMenuItem.Name = "exchangeToolStripMenuItem";
-            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exchangeToolStripMenuItem.Size = new System.Drawing.Size(124, 22);
             this.exchangeToolStripMenuItem.Text = "Exchange";
             // 
             // sMARTToolStripMenuItem
@@ -141,19 +143,19 @@
             this.sMARTToolStripMenuItem.Checked = true;
             this.sMARTToolStripMenuItem.CheckState = System.Windows.Forms.CheckState.Checked;
             this.sMARTToolStripMenuItem.Name = "sMARTToolStripMenuItem";
-            this.sMARTToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sMARTToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.sMARTToolStripMenuItem.Text = "SMART";
             // 
             // nASDAQToolStripMenuItem
             // 
             this.nASDAQToolStripMenuItem.Name = "nASDAQToolStripMenuItem";
-            this.nASDAQToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nASDAQToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.nASDAQToolStripMenuItem.Text = "NASDAQ";
             // 
             // nYSEToolStripMenuItem
             // 
             this.nYSEToolStripMenuItem.Name = "nYSEToolStripMenuItem";
-            this.nYSEToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.nYSEToolStripMenuItem.Size = new System.Drawing.Size(122, 22);
             this.nYSEToolStripMenuItem.Text = "NYSE";
             // 
             // helpToolStripMenuItem
@@ -190,10 +192,27 @@
             series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
             series1.Legend = "Legend1";
             series1.Name = "Price";
+            series2.BorderColor = System.Drawing.Color.Red;
+            series2.BorderWidth = 2;
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series2.Color = System.Drawing.Color.Red;
+            series2.Legend = "Legend1";
+            series2.Name = "SMA-20 D";
+            series3.BorderColor = System.Drawing.Color.Black;
+            series3.BorderWidth = 2;
+            series3.ChartArea = "ChartArea1";
+            series3.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series3.Color = System.Drawing.Color.Black;
+            series3.Legend = "Legend1";
+            series3.Name = "EMA-20 D";
             this.OurChart.Series.Add(series1);
+            this.OurChart.Series.Add(series2);
+            this.OurChart.Series.Add(series3);
             this.OurChart.Size = new System.Drawing.Size(478, 379);
             this.OurChart.TabIndex = 0;
             this.OurChart.Text = "chart1";
+            this.OurChart.Click += new System.EventHandler(this.OurChart_Click);
             // 
             // algoGroupBox
             // 
@@ -229,6 +248,7 @@
             this.tbQuantity.Name = "tbQuantity";
             this.tbQuantity.Size = new System.Drawing.Size(120, 20);
             this.tbQuantity.TabIndex = 40;
+            this.tbQuantity.Click += new System.EventHandler(this.tbQuantity_Click);
             // 
             // tbAction
             // 
@@ -237,6 +257,7 @@
             this.tbAction.Size = new System.Drawing.Size(120, 20);
             this.tbAction.TabIndex = 39;
             this.tbAction.Text = "BUY";
+            this.tbAction.Click += new System.EventHandler(this.tbAction_Click);
             // 
             // tbOrderType
             // 
@@ -244,6 +265,7 @@
             this.tbOrderType.Name = "tbOrderType";
             this.tbOrderType.Size = new System.Drawing.Size(119, 20);
             this.tbOrderType.TabIndex = 38;
+            this.tbOrderType.Click += new System.EventHandler(this.tbOrderType_Click);
             // 
             // label7
             // 
@@ -260,6 +282,7 @@
             this.tbLimitPrice.Name = "tbLimitPrice";
             this.tbLimitPrice.Size = new System.Drawing.Size(120, 20);
             this.tbLimitPrice.TabIndex = 35;
+            this.tbLimitPrice.Click += new System.EventHandler(this.tbLimitPrice_Click);
             // 
             // label6
             // 
@@ -285,6 +308,7 @@
             this.tbOrderId.Name = "tbOrderId";
             this.tbOrderId.Size = new System.Drawing.Size(120, 20);
             this.tbOrderId.TabIndex = 31;
+            this.tbOrderId.Click += new System.EventHandler(this.tbOrderId_Click);
             // 
             // label4
             // 
@@ -438,11 +462,11 @@
             this.chtStocks.Legends.Add(legend2);
             this.chtStocks.Location = new System.Drawing.Point(6, 44);
             this.chtStocks.Name = "chtStocks";
-            series2.ChartArea = "ChartArea1";
-            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
-            series2.Legend = "Legend1";
-            series2.Name = "Series1";
-            this.chtStocks.Series.Add(series2);
+            series4.ChartArea = "ChartArea1";
+            series4.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Line;
+            series4.Legend = "Legend1";
+            series4.Name = "Closing Prices";
+            this.chtStocks.Series.Add(series4);
             this.chtStocks.Size = new System.Drawing.Size(436, 207);
             this.chtStocks.TabIndex = 41;
             this.chtStocks.Text = "chart1";
