@@ -251,90 +251,93 @@ namespace VTB
 
             int n = 0;
 
-            // Run if a new price has been appended to the list
-            while (n != listOfPrices.Count())
+            while (true) // Keep looping
             {
-                if (strategyToApply == "smaCrossover")
+                // Run if a new price has been appended to the list
+                if (n != listOfPrices.Count())
                 {
-                    int outBegIdxSma, outNbElementSma;
-                    double[] outputSma = new double[priceArray.Length];
-
-                    Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
-
-                    if (outputSma.Last() < listOfPrices.Last())
+                    if (strategyToApply == "smaCrossover")
                     {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
-                    }                 
-                }
+                        int outBegIdxSma, outNbElementSma;
+                        double[] outputSma = new double[priceArray.Length];
 
-                else if (strategyToApply == "smaCrossunder")
-                {
-                    int outBegIdxSma, outNbElementSma;
-                    double[] outputSma = new double[priceArray.Length];
+                        Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
 
-                    Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
-
-                    if (outputSma.Last() > listOfPrices.Last())
-                    {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        if (outputSma.Last() < listOfPrices.Last())
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
                     }
-                }
 
-                else if (strategyToApply == "emaCrossover")
-                {
-                    int outBegIdxEma, outNbElementEma;
-                    double[] outputEma = new double[priceArray.Length];
-
-                    Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
-
-                    if (outputEma.Last() > listOfPrices.Last())
+                    else if (strategyToApply == "smaCrossunder")
                     {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        int outBegIdxSma, outNbElementSma;
+                        double[] outputSma = new double[priceArray.Length];
+
+                        Core.Sma(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxSma, out outNbElementSma, outputSma);
+
+                        if (outputSma.Last() > listOfPrices.Last())
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
                     }
-                }
 
-                else if (strategyToApply == "emaCrossunder")
-                {
-                    int outBegIdxEma, outNbElementEma;
-                    double[] outputEma = new double[priceArray.Length];
-
-                    Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
-
-                    if (outputEma.Last() < listOfPrices.Last())
+                    else if (strategyToApply == "emaCrossover")
                     {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        int outBegIdxEma, outNbElementEma;
+                        double[] outputEma = new double[priceArray.Length];
+
+                        Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
+
+                        if (outputEma.Last() > listOfPrices.Last())
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
                     }
-                }
 
-                else if (strategyToApply == "rsiOverSold")
-                {
-                    int outBegIdxRsi, outNbElementRsi;
-                    double[] outputRsi = new double[priceArray.Length];
-
-                    Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
-
-                    if (outputRsi.Last() < 30)
+                    else if (strategyToApply == "emaCrossunder")
                     {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        int outBegIdxEma, outNbElementEma;
+                        double[] outputEma = new double[priceArray.Length];
+
+                        Core.Ema(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxEma, out outNbElementEma, outputEma);
+
+                        if (outputEma.Last() < listOfPrices.Last())
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
                     }
-                }
 
-                else if (strategyToApply == "rsiOverBought")
-                {
-                    int outBegIdxRsi, outNbElementRsi;
-                    double[] outputRsi = new double[priceArray.Length];
-
-                    Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
-
-                    if (outputRsi.Last() > 70)
+                    else if (strategyToApply == "rsiOverSold")
                     {
-                        this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        int outBegIdxRsi, outNbElementRsi;
+                        double[] outputRsi = new double[priceArray.Length];
+
+                        Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+
+                        if (outputRsi.Last() < 30)
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
                     }
-                }
 
-                n = listOfPrices.Count();
+                    else if (strategyToApply == "rsiOverBought")
+                    {
+                        int outBegIdxRsi, outNbElementRsi;
+                        double[] outputRsi = new double[priceArray.Length];
 
-            }// end: if (n != listOfPrices.Count()) 
+                        Core.Rsi(0, listOfPrices.Count - 1, priceArray, timeFrame, out outBegIdxRsi, out outNbElementRsi, outputRsi);
+
+                        if (outputRsi.Last() > 70)
+                        {
+                            this.axTws1.placeOrderEx(int.Parse(this.tbOrderId.Text), ContractInfo, OrderInfo);
+                        }
+                    }
+
+                    n = listOfPrices.Count();
+
+                }// end: if (n != listOfPrices.Count()) 
+            }// end: while (true)
 
         }// end btnSubmit_Click
 
@@ -351,7 +354,7 @@ namespace VTB
             // e.volume    The volume (number of shares/contract) for the bar/interval
             // e.wAP       The average price during the bar/interval 
             string OutputString;
-            
+
             // Concatenate all of the required fields into the OutputString
             OutputString = e.date + " " +
                            e.open.ToString("N2") + " " +
@@ -367,7 +370,7 @@ namespace VTB
 
                 chtStocks.Series["Closing Prices"].Points.AddXY(e.date, e.close);
                 chtStocks.ChartAreas[0].AxisY.Minimum = histCloses.Min() - .5;
-                
+
 
             } //end  axTws1_historicalData
         }
@@ -406,5 +409,6 @@ namespace VTB
         {
             tbDescription.Text = "This is a chart that currently shows the Last Price, and shows the 20 day Simple Moving average and a 20 day Exponential Moving Average.";
         }
-    }
+
+    }//end public partial class Form1 : Form
 }
