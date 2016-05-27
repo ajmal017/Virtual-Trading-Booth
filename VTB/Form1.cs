@@ -137,6 +137,10 @@ namespace VTB
                  this.tbBars.Text,
                  "TRADES", 1, 1, ChartOptions);
 
+            listBox1.Items.Add("You have viewing a different Stock. CURRENTLY VIEWING: " + ContractInfo.symbol);
+            listBox1.SelectedIndex = listBox1.Items.Count - 1;
+            
+
         }// end Reconnect code segment.
 
         private void axTws1_tickPrice(object sender, AxTWSLib._DTwsEvents_tickPriceEvent e)
@@ -353,15 +357,8 @@ namespace VTB
             // e.close     The closing price of the bar/interval
             // e.volume    The volume (number of shares/contract) for the bar/interval
             // e.wAP       The average price during the bar/interval 
-            string OutputString;
-
-            // Concatenate all of the required fields into the OutputString
-            OutputString = e.date + " " +
-                           e.open.ToString("N2") + " " +
-                           e.close.ToString("N2") + " " +
-                           e.volume;
-            // Add the output string to the ListBox
-            listBox1.Items.Add(OutputString);
+      
+            
 
             // Add data points to the chart
             if (e.close > 0.0)
@@ -410,5 +407,6 @@ namespace VTB
             tbDescription.Text = "This is a chart that currently shows the Last Price, and shows the 20 day Simple Moving average and a 20 day Exponential Moving Average.";
         }
 
+      
     }//end public partial class Form1 : Form
 }
